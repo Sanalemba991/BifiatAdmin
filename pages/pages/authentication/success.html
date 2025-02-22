@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/assets/img/Bit Fait.png">
+    <title>Super Admin Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #060818;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #060818;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+        }
+
+        .transaction-success {
+            margin: 20px 0;
+            font-size: 1.2em;
+            color:white
+        }
+
+        .progress-container {
+            position: relative;
+            height: 30px;
+            background-color: #2b3c57;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        .progress-bar {
+            position: absolute;
+            height: 100%;
+            background-color: #182335;
+            border-radius: 10px;
+            width: 70%; /* Example: Success rate is 70% */
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: bold;
+            color: white;
+        }
+
+        .transaction-list {
+            margin-top: 30px;
+        }
+
+        .transaction-item {
+            background-color: #182335;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .transaction-item h3 {
+            margin: 0;
+            color:white;
+        }
+
+        .transaction-details {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9em;
+            color: white;
+        }
+
+        .status-success {
+            color: white;
+            font-weight: bold;
+        }
+
+        .status-failed {
+            color:white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>USDT Transaction Success Rate</h1>
+
+        <div class="transaction-success">
+            Success rate of USDT transactions: 70%
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+            <div class="progress-text">70%</div>
+        </div>
+
+        <div class="transaction-list">
+            <div class="transaction-item">
+                <h3>Transaction #1</h3>
+                <div class="transaction-details">
+                    <span>Amount: 100 USDT</span>
+                    <span>Date: 2025-02-19</span>
+                    <span class="status-success">Success</span>
+                </div>
+            </div>
+            <div class="transaction-item">
+                <h3>Transaction #2</h3>
+                <div class="transaction-details">
+                    <span>Amount: 50 USDT</span>
+                    <span>Date: 2025-02-18</span>
+                    <span class="status-failed">Failed</span>
+                </div>
+            </div>
+            <div class="transaction-item">
+                <h3>Transaction #3</h3>
+                <div class="transaction-details">
+                    <span>Amount: 200 USDT</span>
+                    <span>Date: 2025-02-17</span>
+                    <span class="status-success">Success</span>
+                </div>
+            </div>
+            <div class="transaction-item">
+                <h3>Transaction #4</h3>
+                <div class="transaction-details">
+                    <span>Amount: 150 USDT</span>
+                    <span>Date: 2025-02-16</span>
+                    <span class="status-success">Success</span>
+                </div>
+            </div>
+            <div class="transaction-item">
+                <h3>Transaction #5</h3>
+                <div class="transaction-details">
+                    <span>Amount: 120 USDT</span>
+                    <span>Date: 2025-02-15</span>
+                    <span class="status-failed">Failed</span>
+                </div>
+            </div>
+            <div class="transaction-item">
+                <h3>Transaction #6</h3>
+                <div class="transaction-details">
+                    <span>Amount: 80 USDT</span>
+                    <span>Date: 2025-02-14</span>
+                    <span class="status-success">Success</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

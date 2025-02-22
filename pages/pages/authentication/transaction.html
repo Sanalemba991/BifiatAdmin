@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction History</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #182335;
+            color: white;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #182335;
+        }
+        .status {
+            padding: 5px 10px;
+            border-radius: 4px;
+            color: white;
+        }
+        .completed { background-color: green; }
+        .failed { background-color: red; }
+        .cancelled { background-color: orange; }
+        .pending { background-color: gray; }
+    </style>
+</head>
+<body>
+    <h2>Merchant Transaction</h2>
+    <label for="statusFilter">Filter by Status:</label>
+    <select id="statusFilter" onchange="filterTable()">
+        <option value="">All</option>
+        <option value="Completed">Completed</option>
+        <option value="Failed">Failed</option>
+        <option value="Cancelled">Cancelled</option>
+    </select>
+    <table>
+        <thead>
+            <tr>
+                <th>Transaction ID</th>
+                <th>Created at</th>
+                <th>Transaction Type</th>
+                <th>Status</th>
+                <th>Price</th>
+                <th>Country</th>
+            </tr>
+        </thead>
+        <tbody id="transactionBody">
+            <tr><td>1639092711535414238</td><td>06.09.2025</td><td>Payment</td><td class="status completed">Completed</td><td>$500.00</td><td>USA</td></tr>
+            <tr><td>1624605698560068883</td><td>25.06.2025</td><td>Payment</td><td class="status failed">Failed</td><td>$120.00</td><td>USA</td></tr>
+            <tr><td>1620217296213070143</td><td>05.03.2025</td><td>Payment</td><td class="status completed">Completed</td><td>$320.00</td><td>USA</td></tr>
+            <tr><td>1639203812345612234</td><td>10.10.2025</td><td>Payment</td><td class="status completed">Completed</td><td>$200.00</td><td>USA</td></tr>
+            <tr><td>1624625891012378456</td><td>15.07.2025</td><td>Payment</td><td class="status failed">Failed</td><td>$75.00</td><td>USA</td></tr>
+            <tr><td>1639123456789023123</td><td>08.08.2025</td><td>Payment</td><td class="status pending">Pending</td><td>$640.00</td><td>USA</td></tr>
+            <tr><td>1624789012345678901</td><td>20.09.2025</td><td>Payment</td><td class="status completed">Completed</td><td>$900.00</td><td>USA</td></tr>
+            <tr><td>1624598765432109876</td><td>30.05.2025</td><td>Payment</td><td class="status completed">Completed</td><td>$150.00</td><td>USA</td></tr>
+            <tr><td>1624689012345676543</td><td>18.06.2025</td><td>Payment</td><td class="status cancelled">Cancelled</td><td>$250.00</td><td>USA</td></tr>
+            <tr><td>1624789567890123456</td><td>12.04.2025</td><td>Payment</td><td class="status failed">Failed</td><td>$130.00</td><td>USA</td></tr>
+        </tbody>
+    </table>
+    <script>
+        function filterTable() {
+            const filter = document.getElementById("statusFilter").value.toLowerCase();
+            const rows = document.querySelectorAll("#transactionBody tr");
+            rows.forEach(row => {
+                const status = row.querySelector(".status").textContent.toLowerCase();
+                row.style.display = filter === "" || status.includes(filter) ? "" : "none";
+            });
+        }
+    </script>
+</body>
+</html>
