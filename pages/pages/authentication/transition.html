@@ -14,27 +14,27 @@
       padding: 0;
     }
     .container {
-      width: 80%;
+      width: 90%;
+      max-width: 1200px;
       margin: 30px auto;
       padding: 20px;
-      background-color: #060818; /* Dark background for container */
+      background-color: #060818;
       border-radius: 8px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     }
     .header {
       text-align: center;
-      font-size: 24px;
+      font-size: 2rem;
       color: #fff;
     }
     .user {
       margin-top: 20px;
       padding: 15px;
-   
       border-radius: 8px;
-      background-color:0 4px 8px rgba(9, 9, 31, 0.5);
+      background-color: rgba(9, 9, 31, 0.5);
     }
     .user-name {
-      font-size: 20px;
+      font-size: 1.5rem;
       font-weight: bold;
       color: #fff;
     }
@@ -42,12 +42,14 @@
       display: flex;
       justify-content: space-between;
       margin-top: 10px;
-      font-size: 18px;
+      font-size: 1rem;
       color: #ddd;
+      flex-wrap: wrap;
     }
     .transaction-details div {
       padding: 10px;
       width: 45%;
+      margin-bottom: 10px;
       border-radius: 6px;
     }
     .transaction-details div span {
@@ -55,16 +57,48 @@
       color: #fff;
     }
     .inr {
-      background-color: #182335; /* Professional blue background for INR */
+      background-color: #182335;
     }
     .usdt {
-      background-color: #182335; /* Dark grey for USDT to look more neutral */
+      background-color: #182335;
     }
     .footer {
       text-align: center;
       margin-top: 30px;
-      font-size: 14px;
+      font-size: 1rem;
       color: #ccc;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      .header {
+        font-size: 1.5rem;
+      }
+      .user-name {
+        font-size: 1.2rem;
+      }
+      .transaction-details {
+        flex-direction: column;
+        align-items: center;
+      }
+      .transaction-details div {
+        width: 80%;
+      }
+      .footer {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header {
+        font-size: 1.2rem;
+      }
+      .user-name {
+        font-size: 1rem;
+      }
+      .transaction-details div {
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -146,7 +180,7 @@
     </div>
 
     <div class="footer">
-      Transaction data for  users.
+      Transaction data for users.
     </div>
   </div>
 
