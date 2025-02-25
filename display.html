@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #060818;
+            color: white;
+        }
+        .transaction-details {
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px 12px;
+            text-align: left;
+            background-color: #182335;
+        }
+        th {
+            background-color: #182335;
+
+        }
+        .inactive {
+            color: red;
+        }
+        .completed {
+            color: green;
+        }
+        .pending {
+            color: orange;
+        }
+        .failed {
+            color: darkred;
+        }
+    </style>
+</head>
+<body>
+    <h1>Transaction Details</h1>
+
+    <div class="transaction-details">
+        <p><strong>Merchant ID:</strong> <span id="merchant-id">97892</span></p>
+        <p><strong>Status:</strong> <span class="inactive">Inactive</span></p>
+
+        <h3>Transactions</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Transaction ID</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>87656756465</td>
+                    <td>2025-01-15</td>
+                    <td>$500</td>
+                    <td class="completed">Completed</td>
+                </tr>
+                <tr>
+                    <td>23459333389</td>
+                    <td>2025-01-20</td>
+                    <td>$1500</td>
+                    <td class="pending">Pending</td>
+                </tr>
+                <tr>
+                    <td>3123456789</td>
+                    <td>2025-02-10</td>
+                    <td>$700</td>
+                    <td class="completed">Completed</td>
+                </tr>
+                <tr>
+                    <td>3123456789</td>
+                    <td>2025-02-10</td>
+                    <td>$700</td>
+                    <td class="completed">Completed</td>
+                </tr>  <tr>
+                    <td>3123456789</td>
+                    <td>2025-02-10</td>
+                    <td>$700</td>
+                    <td class="completed">Completed</td>
+                </tr>
+                <!-- Add more transactions as needed -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Get the Merchant ID from the URL parameter and display it dynamically
+        const urlParams = new URLSearchParams(window.location.search);
+        const merchantId = urlParams.get('merchant_id');
+        if (merchantId) {
+            document.getElementById('merchant-id').textContent = merchantId;
+        }
+    </script>
+</body>
+</html>
