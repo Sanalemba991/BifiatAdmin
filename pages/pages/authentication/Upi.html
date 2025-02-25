@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UPI Payment</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #060818;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      max-width: 500px;
+      width: 100%;
+      background-color: #182335;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      color: white;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 26px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    .pay-button {
+      width: 100%;
+      padding: 14px;
+      background-color: rgb(23, 11, 53);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .pay-button:active {
+      transform: scale(0.95);
+    }
+
+    .pay-button:hover {
+      background-color: #0c2642;
+    }
+
+    .gateway-options {
+      display: none;
+      margin-top: 20px;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .gateway-options i {
+      font-size: 50px;
+      margin: 10px;
+      cursor: pointer;
+      border-radius: 8px;
+      padding: 10px;
+      background-color: white;
+      color: #182335;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .gateway-options i:hover {
+      background-color: #0c2642;
+      color: white;
+      transform: scale(1.1);
+    }
+
+    .loading {
+      text-align: center;
+      font-size: 18px;
+      color: #007BFF;
+      display: none;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+
+    .payment-status {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 16px;
+      font-weight: bold;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .success { color: green; }
+    .failure { color: red; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>UPI Payment</h1>
+    <form class="payment-form">
+      <label for="upi-id">UPI ID:</label>
+      <input type="text" id="upi-id" name="upi-id" placeholder="Enter UPI ID" required>
+
+      <label for="amount">Amount (₹):</label>
+      <input type="number" id="amount" name="amount" placeholder="Enter Amount" required>
+
+      <button type="button" class="pay-button" id="show-options">Pay Now</button>
+    </form>
+
+    <div class="gateway-options" id="gateway-options">
+      <p>Select Payment Gateway:</p>
+      <i class="fa-brands fa-paypal" id="paytm" title="Paytm"></i>
+      <i class="fa-brands fa-google-pay" id="gpay" title="Google Pay"></i>
+      <i class="fa-solid fa-mobile-alt" id="phonepe" title="PhonePe"></i>
+
+
+    </div>
+
+    <div class="loading" id="loading">Processing payment...</div>
+    <div class="payment-status" id="payment-status"></div>
+  </div>
+
+  <script>
+    document.getElementById('show-options').addEventListener('click', function () {
+      const gatewayOptions = document.getElementById('gateway-options');
+      gatewayOptions.style.display = 'block';
+      setTimeout(() => {
+        gatewayOptions.style.opacity = '1';
+      }, 10);
+    });
+
+    document.querySelectorAll('.gateway-options i').forEach(icon => {
+      icon.addEventListener('click', function () {
+        const gateway = this.title;
+        const upiId = document.getElementById('upi-id').value;
+        const amount = document.getElementById('amount').value;
+        const loading = document.getElementById('loading');
+        const paymentStatus = document.getElementById('payment-status');
+
+        if (!upiId || !amount) {
+          alert('Please fill in all fields.');
+          return;
+        }
+
+        loading.style.display = 'block';
+        paymentStatus.style.opacity = '0';
+
+        setTimeout(() => {
+          loading.style.display = 'none';
+          const successChance = Math.random();
+          paymentStatus.style.opacity = '1';
+
+          if (successChance > 0.3) {
+            paymentStatus.textContent = `Payment of ₹${amount} via ${gateway} to UPI ID ${upiId} was successful!`;
+            paymentStatus.className = 'payment-status success';
+          } else {
+            paymentStatus.textContent = `Payment failed. Please try again.`;
+            paymentStatus.className = 'payment-status failure';
+          }
+        }, 2000);
+      });
+    });
+  </script>
+</body>
+</html>
