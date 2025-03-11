@@ -6,13 +6,15 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
   phone: {
-    type: Number,
+    type: String, // Changed to String to handle different formats
     required: true,
+    unique: true,
   },
   email: {
     type: String,
     required: true,
     unique: true,
+    lowercase: true, // Ensures email is stored in lowercase
   },
   password: {
     type: String,
@@ -21,8 +23,12 @@ const userSchema = new mongoose.Schema({
   upi: {
     type: String,
     required: true,
+    match: /^[a-zA-Z0-9.\-_]+@[a-zA-Z]+$/, // Basic validation for UPI ID
   },
-  wallet_addresss: {},
+  wallet_address: {
+    type: String, // Explicitly define type
+    default: "",
+  },
   coins: {
     type: Number,
     default: 0,
@@ -32,3 +38,5 @@ const userSchema = new mongoose.Schema({
     default: 0,
   },
 });
+
+module.exports = mongoose.model("User", userSchema);
